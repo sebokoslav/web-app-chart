@@ -1,7 +1,0 @@
-image: ""
-appName: ""
-environment: ""
-repo: ""
-containerPort: 0
-externalPort: 0
-targetPort: 0

@@ -5,3 +5,4 @@ repo: ""
 containerPort: 0
 externalPort: 0
 targetPort: 0
+replicas: 0

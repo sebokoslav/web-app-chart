@@ -9,6 +9,7 @@ spec:
   source:
     repoURL: {{ .Values.repo }}
     targetRevision: {{ .Values.environment }}
+    chart: web-app-chart
   destination: 
     server: https://kubernetes.default.svc
     namespace: {{ .Values.appName }}-{{ .Values.environment }}

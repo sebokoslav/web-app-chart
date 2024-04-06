@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  web-app-chart:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-06T17:28:38.505970713Z"
+    description: A Helm chart for Kubernetes
+    digest: 90faf8fc384faf461335ab10f78e8c47930c7f7e31e946ab0558ac45e26d07a1
+    name: web-app-chart
+    type: application
+    urls:
+    - https://sebokoslav.github.io/web-app-chart/web-app-chart-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-04-06T17:28:38.505663209Z"

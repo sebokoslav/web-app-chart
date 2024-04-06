@@ -1,8 +1,8 @@
-image: "sebokoslav/ci-cd-test-app:v1.0.16"
-appName: "cicdtest"
-environment: "prod"
-repo: "https://github.com/sebokoslav/web-app-chart.git"
-containerPort: 8080
-externalPort: 3000
-targetPort: 80
-replicas: 1
+image: ""
+appName: ""
+environment: ""
+repo: ""
+containerPort: 0
+externalPort: 0
+targetPort: 0
+replicas: 0

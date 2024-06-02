@@ -1,23 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: application-{{ .Values.appName }}-{{ .Values.environment }}
+  name: "application-{{ .Values.appName }}-{{ .Values.environment }}"
   namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: {{ .Values.repo }}
-    targetRevision: {{ .Values.environment }}
-    chart: web-app-chart
+    repoURL: "{{ .Values.repo }}"
+    targetRevision: "{{ .Values.environment }}"
+    chart: "web-app-chart"
   destination: 
-    server: https://kubernetes.default.svc
-    namespace: {{ .Values.appName }}-{{ .Values.environment }}
+    server: "https://kubernetes.default.svc"
+    namespace: "{{ .Values.appName }}-{{ .Values.environment }}"
 
   syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-
     automated:
       selfHeal: true
       prune: true
+    syncOptions:
+      - CreateNamespace=true

@@ -3,7 +3,17 @@ entries:
   web-app-chart:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-06-02T12:40:51.775977659Z"
+    created: "2024-06-02T12:46:59.03660298Z"
+    description: A Helm chart for Kubernetes
+    digest: 8a3e61339d7a21471b6089542d75fc4caf4eeb6277bee95364643b17ad3706d0
+    name: web-app-chart
+    type: application
+    urls:
+    - https://sebokoslav.github.io/web-app-chart/web-app-chart-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-02T12:46:59.036203831Z"
     description: A Helm chart for Kubernetes
     digest: f7429344ca411a789ea90c4b734209503ec78aee402a64f2955f0547553fcddd
     name: web-app-chart
@@ -13,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-06-02T12:40:51.775687978Z"
+    created: "2024-06-02T12:46:59.035676018Z"
     description: A Helm chart for Kubernetes
     digest: 90faf8fc384faf461335ab10f78e8c47930c7f7e31e946ab0558ac45e26d07a1
     name: web-app-chart
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://sebokoslav.github.io/web-app-chart/web-app-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2024-06-02T12:40:51.774978324Z"
+generated: "2024-06-02T12:46:59.034664384Z"

@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: "deployment-{{ .Values.appName }}-{{ .Values.environment }}"
   labels:
-    app: "{{ .Values.appName }}"
+    app: "{{ .Values.appName }}-{{ .Values.environment }}"
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: "{{ .Values.appName }}"
+      app: "{{ .Values.appName }}-{{ .Values.environment }}"
   template:
     metadata:
       labels:
-        app: "{{ .Values.appName }}"
+        app: "{{ .Values.appName }}-{{ .Values.environment }}"
     spec:
       containers:
-      - name: "{{ .Values.appName }}"
+      - name: "{{ .Values.appName }}-{{ .Values.environment }}"
         image: "{{ .Values.image }}"
         ports:
         - containerPort: {{ .Values.containerPort }}

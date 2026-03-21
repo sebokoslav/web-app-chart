@@ -1,10 +1,10 @@
-image: ""
-appName: ""
-environment: ""
-repo: ""
-containerPort: 0
-externalPort: 0
-targetPort: 0
+image: "nginx:alpine"
+appName: "myapp"
+environment: "dev"
+repo: "https://github.com/example/repo.git"
+containerPort: 8080
+externalPort: 80
+targetPort: 8080
 replicas: 1
 
 resources:

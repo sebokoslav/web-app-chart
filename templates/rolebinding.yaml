@@ -1,0 +1,16 @@
+{{- if .Values.serviceAccount.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{- if .Values.serviceAccount.name }} "{{ .Values.serviceAccount.name }}"{{- else }} "{{ .Values.appName }}-{{ .Values.environment }}"{{- end }}
+  labels:
+    app: "{{ .Values.appName }}-{{ .Values.environment }}"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{- if .Values.serviceAccount.name }} "{{ .Values.serviceAccount.name }}"{{- else }} "{{ .Values.appName }}-{{ .Values.environment }}"{{- end }}
+subjects:
+  - kind: ServiceAccount
+    name: {{- if .Values.serviceAccount.name }} "{{ .Values.serviceAccount.name }}"{{- else }} "{{ .Values.appName }}-{{ .Values.environment }}"{{- end }}
+    namespace: {{ .Release.Namespace }}
+{{- end }}

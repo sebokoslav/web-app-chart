@@ -5,4 +5,45 @@ repo: ""
 containerPort: 0
 externalPort: 0
 targetPort: 0
-replicas: 0
+replicas: 1
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
+
+livenessProbe:
+  enabled: true
+  httpGet:
+    path: /health
+    port: containerPort
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  enabled: true
+  httpGet:
+    path: /ready
+    port: containerPort
+  initialDelaySeconds: 10
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 2
+
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations: {}
+  host: ""
+  path: /
+  pathType: Prefix
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}

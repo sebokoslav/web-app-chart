@@ -4,6 +4,10 @@ metadata:
   name: "deployment-{{ .Values.appName }}-{{ .Values.environment }}"
   labels:
     app: "{{ .Values.appName }}-{{ .Values.environment }}"
+  annotations:
+    {{- if .Values.repo }}
+    repository: "{{ .Values.repo }}"
+    {{- end }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
@@ -14,8 +18,36 @@ spec:
       labels:
         app: "{{ .Values.appName }}-{{ .Values.environment }}"
     spec:
+      serviceAccountName: {{- if .Values.serviceAccount.name }} "{{ .Values.serviceAccount.name }}"{{- else }} "{{ .Values.appName }}-{{ .Values.environment }}"{{- end }}
       containers:
       - name: "{{ .Values.appName }}-{{ .Values.environment }}"
         image: "{{ .Values.image }}"
         ports:
         - containerPort: {{ .Values.containerPort }}
+        resources:
+          requests:
+            cpu: "{{ .Values.resources.requests.cpu }}"
+            memory: "{{ .Values.resources.requests.memory }}"
+          limits:
+            cpu: "{{ .Values.resources.limits.cpu }}"
+            memory: "{{ .Values.resources.limits.memory }}"
+        {{- if .Values.livenessProbe.enabled }}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.livenessProbe.httpGet.path }}
+            port: {{ .Values.livenessProbe.httpGet.port }}
+          initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+        {{- end }}
+        {{- if .Values.readinessProbe.enabled }}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.readinessProbe.httpGet.path }}
+            port: {{ .Values.readinessProbe.httpGet.port }}
+          initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+        {{- end }}
